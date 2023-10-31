@@ -39,7 +39,7 @@ export class BoardController {
   }
 
   @Post()
-  @UsePipes(ValidationPipe)
+  @UsePipes(ValidationPipe) // 유효성 체크 파이프
   createBoard(@Body() createboardDto: CreateBoardDto, @GetUser() user: User) {
     return this.boardService.createBoard(createboardDto, user);
   }
