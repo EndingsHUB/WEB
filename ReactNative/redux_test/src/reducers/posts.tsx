@@ -12,7 +12,7 @@ const todos = (state: string[] = [], action: Action) => {
     switch (action.type) {
         case TddoActionType.ADD_TODO:
             return [...state, action.text];
-            
+
         case TddoActionType.DELETE_TODO:
             return state;
 

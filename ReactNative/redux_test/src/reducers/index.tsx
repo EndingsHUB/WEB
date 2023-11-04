@@ -12,4 +12,5 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
+//상태 타입을 정의 한다.
 export type RootState = ReturnType<typeof rootReducer>;
