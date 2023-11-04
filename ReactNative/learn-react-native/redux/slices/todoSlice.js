@@ -1,8 +1,8 @@
 ﻿import {createSlice} from "@reduxjs/toolkit";
 
 const todoSlice = createSlice({
-    name: 'todo',
-    initialState: {
+    name: 'todo',     // slice 이픔
+    initialState: {     // 초기 상태
         currentId: 4,
         todos: [],
     },

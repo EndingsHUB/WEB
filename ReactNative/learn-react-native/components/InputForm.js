@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, KeyboardAvoidingView, Platform, TextInput, Pressable, Text} from 'react-native';
+import {useDispatch} from "react-redux";
+import {addTodo} from "../redux/slices/todoSlice";
 
 // 인풋박스 컨포넌트
 const InputForm = () => {
+    const [currentValue, setCurrentValue] = useState('');
+    const dispatch = useDispatch();
+    
+    const handleSubmit = () => {
+        if (currentValue) {
+            dispatch(addTodo(currentValue))
+        }
+    }
     return (
         // 키보드가 올라올때 컨텐츠 작동 방식을 정의
         // enum('height', 'position', 'padding')
@@ -13,11 +23,16 @@ const InputForm = () => {
             <TextInput
                 style={styles.inputField}
                 placeholder={'할 일을 작성해 주세요'}
+                value={currentValue}
+                onChangeText={setCurrentValue}
             />
             
             {/*Pressable : 터치 입력에 대한 동작을 정의*/}
             {/*onPressIn,onPressOut,onPress,onLongPress,*/}
-            <Pressable style={styles.addButton}>
+            <Pressable 
+                style={styles.addButton}
+                onPress={handleSubmit}
+            >
                 <Text style={styles.addButtonText}>+</Text>
             </Pressable>
             
